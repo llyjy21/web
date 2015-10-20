@@ -28,6 +28,7 @@ Main files
 
 
 Bugs:
+
 1. scraping lacentrale hundres times in several seconds, it results to be forbid to connect to this website for minutes or hours.
 Solution? Trying to use random user-agent to solve it, the effect is not obvious.
 
