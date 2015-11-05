@@ -1,0 +1,10 @@
+The things i learned from Web.
+
+1. If your app has to request other websites, but network is not good.
+Resolution: speed-test/on-line. Check the link below:
+https://github.com/sindresorhus 很有用！
+
+2. Js代码样式范例
+https://github.com/airbnb/javascript
+
+3. Mock测试
