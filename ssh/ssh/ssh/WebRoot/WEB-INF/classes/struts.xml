@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.objectFactory" value="spring" />
+<constant name="struts.multipart.maxSize" value="1024000000"/> 
+	<package name="default" extends="struts-default,json-default" >
+		<action name="user_*" class="com.sis.Action.AdminAction" method="{1}">
+				<result name="engSuc" type="redirect">main.jsp</result>
+				<result name="chiSuc" type="redirect">chinese.jsp</result>
+				<result name="error" type="redirect">Error.jsp</result>
+		</action>
+		<action name="folder_*" class="folder" method="{1}">
+				<result name="error" type="redirect">Error.jsp</result>
+				<result type="json" name="success" >  
+           			<param name="root">dataMap</param>  
+    			</result>
+    			<result name="createSuc" type="redirect">main.jsp</result>
+    			<result name="chicreateSuc" type="redirect">chinese.jsp</result>
+		</action>
+		<action name="file_*" class="file" method="{1}">
+				<result name="success" >Img1.jsp</result>
+				<result name="chisuccess" >Img2.jsp</result>
+				<result name="userSuc" >Img3.jsp</result>
+				<result name="userChiSuc" >Img4.jsp</result>
+				<result name="error" type="redirect">Error.jsp</result>
+				<result name="sucVideo" >Video1.jsp</result>
+				<result name="chisucVideo" >Video2.jsp</result>
+				<result name="userSucVideo" >Video3.jsp</result>
+				<result name="userChisucVideo" >Video4.jsp</result>
+		</action>
+		
+		<action name="news_*" class="news" method="{1}">
+				<result name="error" type="redirect">Error.jsp</result>
+    			<result name="success">News1.jsp</result>
+    			<result name="chisuccess">News2.jsp</result>
+    			<result name="userSuc">News3.jsp</result>
+    			<result name="userChiSuc">News4.jsp</result>
+		</action>
+		<action name="con_*" class="contact" method="{1}">
+				<result name="error" type="redirect">Error.jsp</result>
+    			<result name="success">Contact1.jsp</result>
+    			<result name="chisuccess">Contact2.jsp</result>
+    			<result name="usersuccess">Contact3.jsp</result>
+    			<result name="userchisuccess">Contact4.jsp</result>
+		</action>
+		<action name="about_*" class="about" method="{1}">
+				<result name="error" type="redirect">Error.jsp</result>
+    			<result name="success">About1.jsp</result>
+    			<result name="chisuccess">About2.jsp</result>
+    			<result name="usersuccess">About3.jsp</result>
+    			<result name="userchisuccess">About4.jsp</result>
+		</action>
+				
+	</package>
+		
+</struts>    

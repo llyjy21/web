@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+
+@font-face {
+    font-family:"LTUnivers-BasicLight";
+    src:url(../css/font/LTUnivers-BasicLight.otf); /* IE9 Compat Modes */
+    src:url(../css/font/LTUnivers-BasicLight.otf?#iefix) format('embedded-opentype'), /* IE6-IE8 */
+        url(../css/font/LTUnivers-BasicLight.otf) format('woff'), /* Modern Browsers */
+        url(../css/font/LTUnivers-BasicLight.otf)  format('truetype'), /* Safari, Android, iOS */
+        url(../css/font/LTUnivers-BasicLight.otf) format('svg'); /* Legacy iOS */
+   }
+
+a {cursor:pointer;}
+a:link { text-decoration:none; color: #929292;}		
+a:visited {text-decoration:none; color: #929292;}	
+a:hover {text-decoration:none; color:#333; }	
+a:active {text-decoration:none; color:#333;}
+
+.news
+{
+	width:80%;
+	margin:-15px 10%;
+	color:#929292;
+	font-family:"LTUnivers-BasicLight";
+}
+
+.chi
+{
+	font-family:"黑体";
+}
+ul{ margin:0;padding:0;}
+
+#news
+{
+	width:100%;
+}
+
+li{width:100%;list-style-type:none; margin-bottom:10px;}
+
+ul span
+{
+	font-size:14px;
+}

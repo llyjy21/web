@@ -1,0 +1,47 @@
+/*
+* Demo Styles
+*/
+
+
+
+a {
+  text-decoration: none;
+  color: inherit
+}
+
+a.button {
+  background-color: #F02968;
+  padding: 5px 15px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-top: 1.5em;
+  margin-right: 1em
+}
+
+.infobar {
+  font-size: 20px;
+  padding: 1em
+}
+
+.infobar p {
+  text-align: center;
+  margin-top: 1em
+}
+
+h1 {
+  text-align: center;
+  font-size: 2em
+}
+
+.credit,
+.tips {
+  text-align: center
+}
+
+.credit {
+  margin-top: 1em
+}
+
+.credit a {
+  text-decoration: underline
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table name="admin" catalog="photo" class="com.sis.entity.Admin"></table>
+
+	<table name="file" catalog="photo" class="com.sis.entity.File">
+		<primary-key>
+
+		</primary-key>
+	</table>
+	<table name="fileinfo" catalog="photo"
+		class="com.sis.entity.FileInfo">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="admin" catalog="photographer" class="Admin">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="news" catalog="photographer" class="News">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="folder" catalog="photographer" class="com.sis.entity.Folder">
+	<primary-key>
+		<generator class="native"></generator>
+	</primary-key>
+</table>
+</hibernate-reverse-engineering>

@@ -1,0 +1,214 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	margin:0;
+	padding:0; 
+	font-family:"LTUnivers-BasicLight";
+}
+
+ 
+@font-face {
+    font-family:"LTUnivers-BasicLight";
+    src:url(../css/font/LTUnivers-BasicLight.otf); /* IE9 Compat Modes */
+    src:url(../css/font/LTUnivers-BasicLight.otf?#iefix) format('embedded-opentype'), /* IE6-IE8 */
+        url(../css/font/LTUnivers-BasicLight.otf) format('woff'), /* Modern Browsers */
+        url(../css/font/LTUnivers-BasicLight.otf)  format('truetype'), /* Safari, Android, iOS */
+        url(../css/font/LTUnivers-BasicLight.otf) format('svg'); /* Legacy iOS */
+   }
+
+.bg
+{
+	width:95%;
+	margin:0 0 0 5%;
+	display:none;
+}
+
+.header
+{
+	width: 100%;
+	margin-top: 30px;
+	position:relative;
+}
+
+.main
+{
+	width:100%;
+	height:auto;
+	margin-top:10px;
+}
+a {cursor:pointer;}
+a:link { text-decoration:none; color: #929292;}		
+a:visited {text-decoration:none; color: #929292;}	
+a:hover {text-decoration:none; color:#333; font-style:italic;}	
+a:active {text-decoration:none; color:#333; font-style:italic;}
+
+.login
+{
+	width:100%;
+	height:120px;
+	float:left;
+	position:relative;
+}
+
+.log
+{
+	width:30px;
+	height:30px;
+	position:absolute;
+	right:8%;
+	bottom:0;
+	color:#929292;
+	font-size:12px;
+}
+
+.left
+{
+	width:30%;
+	height:auto;
+	float:left;
+}
+
+iframe
+{
+	margin-top:5px;
+}
+.right
+{
+	width:60%;
+	margin:0 10%;
+	height:auto;
+	color:#929292;
+}
+
+li
+{
+
+	list-style-type:none;
+}
+
+.left span li
+{
+	width:100%;
+	height:auto;
+	line-height:20px;
+	font-size:18px;
+}
+
+dl
+{
+	color:#929292;
+	margin-left:0px;
+	margin-top:0;
+}
+
+dt
+{
+	color:#929292;
+	font-size:22px;
+}
+
+.left span
+{
+	width:100%;
+	height:auto;
+	min-height:50px;
+	max-height:200px;
+	overflow:hidden;
+	float:left;
+	position:relative;
+	
+}
+
+.leftControl
+{
+	width:20px;
+	height:50px;
+	float:left;
+	position:absolute;
+	bottom:0;
+	display:block;
+}
+
+.leftTop
+{
+	width:20px;
+	height:20px;
+	background-image:url(../img/leftControl.png);
+	background-position:0 0;
+	background-repeat:no-repeat;
+	cursor:pointer;
+
+}
+
+.leftDown
+{
+	width:20px;
+	height:20px;
+	background-image:url(../img/leftControl.png);
+	background-position:0 -40px;
+	background-repeat:no-repeat;
+	cursor:pointer;
+	margin-top:10px;
+}
+
+.list
+{
+	width:100%;
+	height:auto;
+	position:relative;
+	left:20px;
+}
+
+	
+
+.add
+{
+	width:15px;
+	height:15px;
+	background-image:url(../img/add.png);
+	cursor:pointer;
+	visibility:visible;
+	margin-left:10px;
+}
+
+.operation
+{
+	width:90px;
+	height:auto;
+	float:right;
+	font-size:12px;
+}
+
+.tb img {
+width:160px;
+height:100px;
+}
+
+input{
+	display:block;
+}
+
+
+
+a img {
+	border:none;
+}
+
+
+.clearfix:after{content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+.clearfix{zoom:1;}
+
+i{ font-style:normal;}
+#detail{	position:absolute;width:400px;height:200px;border:1px solid #ccc;background:#efefef; display:none; font-size:14px; font-family:Arial, Helvetica, sans-serif}
+#detail .tit{ background:#ddd; display:block; height:33px; cursor:move;}
+#detail .tit i{ float:right; line-height:33px; padding:0 8px;cursor:pointer;}
+.title{ float:left; line-height:33px; padding:0 8px;cursor:pointer;}
+
+#detail1{	position:absolute;width:400px;height:250px;border:1px solid #ccc;background:#efefef; display:none; font-size:14px; font-family:Arial, Helvetica, sans-serif}
+#detail1 .tit{ background:#ddd; display:block; height:33px; cursor:move;}
+#detail1 .tit i{ float:right; line-height:33px; padding:0 8px;cursor:pointer;}
+
+#detail2{	position:absolute;width:400px;height:200px;border:1px solid #ccc;background:#efefef; display:none; font-size:14px; font-family:Arial, Helvetica, sans-serif}
+#detail2 .tit{ background:#ddd; display:block; height:33px; cursor:move;}
+#detail2 .tit i{ float:right; line-height:33px; padding:0 8px;cursor:pointer;}
+

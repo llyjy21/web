@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- 建立数据源 -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		 <!-- 数据库驱动，我这里使用的是Mysql数据库 -->
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<!-- 数据库地址-->
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/photographer?useUnicode=true&amp;characterEncoding=utf8">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123"></property>
+		
+	</bean>
+	<!-- 把数据源注入给Session工厂 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" >
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		
+		<property name="mappingResources">
+			<list>
+				<value>com/sis/entity/Admin.hbm.xml</value>
+				<value>com/sis/entity/News.hbm.xml</value>
+				<value>com/sis/entity/Contact.hbm.xml</value>
+				<value>com/sis/entity/About.hbm.xml</value>
+				<value>com/sis/entity/Folder.hbm.xml</value>
+				<value>com/sis/entity/FileInfo.hbm.xml</value></list>
+		</property>
+	</bean>
+
+	 <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="adminService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		 <property name="target">
+		 <ref local="adminServiceTarget"/>
+		 </property>
+		
+		 <property name="transactionManager">
+		 <ref local="transactionManager"/>
+		 </property>
+		
+		 <property name="transactionAttributes">
+		 <props>
+		 <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+		 <prop key="*">PROPAGATION_REQUIRED</prop>
+		 </props>
+		 </property>	
+	 </bean>
+  	
+	<bean id="adminDAO" class="com.sis.DAO.impl.AdminDAOImpl">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+    
+    <bean id="adminServiceTarget" class="com.sis.Service.impl.AdminServiceImpl">
+        <property name="admindao">
+            <ref bean="adminDAO"/>
+        </property>
+    </bean>
+	
+    <bean name="user_doLogin" class="com.sis.Action.AdminAction">
+        <property name="adminService">
+            <ref bean="adminService"/>
+        </property>
+    </bean>
+	
+	<bean id="folderService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		 <property name="target">
+		 <ref local="folderServiceTarget"/>
+		 </property>
+		
+		 <property name="transactionManager">
+		 <ref local="transactionManager"/>
+		 </property>
+		
+		 <property name="transactionAttributes">
+		 <props>
+		 <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+		 <prop key="*">PROPAGATION_REQUIRED</prop>
+		 </props>
+		 </property>	
+	 </bean>
+  	
+	<bean id="folderDAO" class="com.sis.DAO.impl.FolderDAOImpl">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+    
+    <bean id="folderServiceTarget" class="com.sis.Service.impl.FolderServiceImpl">
+        <property name="folderdao">
+            <ref bean="folderDAO"/>
+        </property>
+    </bean>
+	
+    <bean name="folder" class="com.sis.Action.FolderAction">
+        <property name="folderService">
+            <ref bean="folderService"/>
+        </property>        
+    </bean>
+	
+	<bean id="fileService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		 <property name="target">
+		 <ref local="fileServiceTarget"/>
+		 </property>
+		
+		 <property name="transactionManager">
+		 <ref local="transactionManager"/>
+		 </property>
+		
+		 <property name="transactionAttributes">
+		 <props>
+		 <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+		 <prop key="*">PROPAGATION_REQUIRED</prop>
+		 </props>
+		 </property>	
+	 </bean>
+  	
+	<bean id="fileDAO" class="com.sis.DAO.impl.FileDAOImpl">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+    
+    <bean id="fileServiceTarget" class="com.sis.Service.impl.FileServiceImpl">
+        <property name="filedao">
+            <ref bean="fileDAO"/>
+        </property>
+    </bean>
+	
+    <bean name="file" class="com.sis.Action.FileAction">
+        <property name="fileService">
+            <ref bean="fileService"/>
+        </property>
+        <property name="folderService">
+            <ref bean="folderService"/>
+        </property>
+    </bean>
+    <bean id="newsService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		 <property name="target">
+		 <ref local="newsServiceTarget"/>
+		 </property>
+		
+		 <property name="transactionManager">
+		 <ref local="transactionManager"/>
+		 </property>
+		
+		 <property name="transactionAttributes">
+		 <props>
+		 <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+		 <prop key="*">PROPAGATION_REQUIRED</prop>
+		 </props>
+		 </property>	
+	 </bean>
+  	
+	<bean id="newsDAO" class="com.sis.DAO.impl.NewsDAOImpl">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+    
+    <bean id="newsServiceTarget" class="com.sis.Service.impl.NewsServiceImpl">
+        <property name="newsdao">
+            <ref bean="newsDAO"/>
+        </property>
+    </bean>
+	
+    <bean name="news" class="com.sis.Action.NewsAction">
+        <property name="newsService">
+            <ref bean="newsService"/>
+        </property>
+    </bean>
+    <bean id="conService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		 <property name="target">
+		 <ref local="conServiceTarget"/>
+		 </property>
+		
+		 <property name="transactionManager">
+		 <ref local="transactionManager"/>
+		 </property>
+		
+		 <property name="transactionAttributes">
+		 <props>
+		 <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+		 <prop key="*">PROPAGATION_REQUIRED</prop>
+		 </props>
+		 </property>	
+	 </bean>
+  	
+	<bean id="conDAO" class="com.sis.DAO.impl.ConDAOImpl">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+    
+    <bean id="conServiceTarget" class="com.sis.Service.impl.ConServiceImpl">
+        <property name="condao">
+            <ref bean="conDAO"/>
+        </property>
+    </bean>
+	 
+    <bean name="contact" class="com.sis.Action.ContactAction">
+        <property name="conService">
+            <ref bean="conService"/>
+        </property>
+    </bean>
+      <bean id="aboutService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		 <property name="target">
+		 <ref local="aboutServiceTarget"/>
+		 </property>
+		
+		 <property name="transactionManager">
+		 <ref local="transactionManager"/>
+		 </property>
+		
+		 <property name="transactionAttributes">
+		 <props>
+		 <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+		 <prop key="*">PROPAGATION_REQUIRED</prop>
+		 </props>
+		 </property>	
+	 </bean>
+  	
+	<bean id="aboutDAO" class="com.sis.DAO.impl.AboutDAOImpl">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+    
+    <bean id="aboutServiceTarget" class="com.sis.Service.impl.AboutServiceImpl">
+        <property name="aboutdao">
+            <ref bean="aboutDAO"/>
+        </property>
+    </bean>
+	 
+    <bean name="about" class="com.sis.Action.AboutAction">
+        <property name="aboutService">
+            <ref bean="aboutService"/>
+        </property>
+    </bean>
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+    	<property name="sessionFactory" ref="sessionFactory"/>
+   	</bean>
+	</beans>
