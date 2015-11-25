@@ -15,7 +15,7 @@ SSH
 ------
 >It is a project I sold. Mainly use the (Struts, Spring, Hibernate) framework. But beacause I lost the final document, It is just a basic version.
 
-Project 2
+Project 62
 ------
 >It is a not finished yet(25/11/2015). It is used to analyse the impact of transport to the tourism in Paris.
 >With Leaflet, D3.js
